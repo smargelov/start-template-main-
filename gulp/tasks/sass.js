@@ -1,6 +1,6 @@
 module.exports = function () {
     sm.gulp.task('sass:dev', function () {
-        return sm.gulp.src('src/static/sass/*.sass')
+        return sm.gulp.src('src/sass/*.sass')
             .pipe(sm.gp.sass()) //запускаем sass
             .pipe(sm.gp.sourcemaps.init()) //инициализация sourcemap
             .pipe(sm.gp.autoprefixer({ // запускаем авоперфиксер
@@ -11,7 +11,7 @@ module.exports = function () {
               }))
             
             .pipe(sm.gp.sourcemaps.write()) // запись sourcemap
-            .pipe(sm.gulp.dest('build/static/css'))
+            .pipe(sm.gulp.dest('build/css'))
             .pipe(sm.browserSync.reload({ //обновление страницы только после обработки всх файлов без перезагрузки
                 stream: true
             }));
@@ -20,7 +20,7 @@ module.exports = function () {
     
 
     sm.gulp.task('sass:build', function () {
-           return sm.gulp.src('src/static/sass/main.sass')
+           return sm.gulp.src('src/sass/main.sass')
             .pipe(sm.gp.sass()) //запускаем sass
             .pipe(sm.gp.autoprefixer({ // запускаем авоперфиксер
                 browsers: ['last 10 versions'] //последние 10 версии браузеров
@@ -34,14 +34,14 @@ module.exports = function () {
             })) //запускаем csso (объединяет элементы в итоговом css)
             .pipe(sm.mmq()) 
             .pipe(sm.gp.csscomb())
-            .pipe(sm.gulp.dest('build/static/css'));
+            .pipe(sm.gulp.dest('build/css'));
     });
 
     sm.gulp.task('sass:lib', function() {
-        return sm.gulp.src('src/static/sass/libs.sass')
+        return sm.gulp.src('src/sass/libs.sass')
             .pipe(sm.gp.sass()) //запускаем sass
             .pipe(sm.gp.csso())
-            .pipe(sm.gulp.dest('build/static/css'));
+            .pipe(sm.gulp.dest('build/css'));
     });
 };
 

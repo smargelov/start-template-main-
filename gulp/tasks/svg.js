@@ -1,6 +1,6 @@
 module.exports = function () {
     sm.gulp.task('svg', () => {
-        return sm.gulp.src('src/static/img/svg/*.svg')
+        return sm.gulp.src('src/img/svg/*.svg')
             .pipe(sm.gp.svgmin({
                 js2svg: {
                     pretty: true
@@ -22,6 +22,6 @@ module.exports = function () {
                     }
                 }
             }))
-            .pipe(sm.gulp.dest('build/static/img/svg'));
+            .pipe(sm.gulp.dest('build/img/svg'));
         });
 };

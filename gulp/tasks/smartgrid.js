@@ -13,7 +13,7 @@ module.exports = function () {
             },
         };
         
-    smartgrid('./src/static/sass/bin', settings);  
+    smartgrid('./src/sass/bin', settings);  
 
  }
 

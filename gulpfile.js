@@ -16,7 +16,7 @@ sm.path.tasks.forEach(function (taskPath) {
 })
 
 sm.gulp.task('default',sm.gulp.series(
-    sm.gulp.parallel('pug', 'sass:dev', 'scripts', 'scripts:lib', 'img:dev'), // запускаем таски параллельно
+    sm.gulp.parallel('html', 'sass:dev', 'scripts', 'scripts:lib', 'img:dev'), // запускаем таски параллельно
     sm.gulp.parallel('watch', 'serve') // запускаем таски параллельно
 ));
 
@@ -26,6 +26,6 @@ sm.gulp.task('clean', function() {
 
 sm.gulp.task('build',sm.gulp.series(
     sm.gulp.parallel('clean'),
-    sm.gulp.parallel('pug', 'sass:build', 'sass:lib', 'scripts', 'scripts:lib', 'img:build'), // запускаем таски параллельно
+    sm.gulp.parallel('html', 'sass:build', 'sass:lib', 'scripts', 'scripts:lib', 'img:build'), // запускаем таски параллельно
     sm.gulp.parallel('watch', 'serve') // запускаем таски параллельно
 ));
