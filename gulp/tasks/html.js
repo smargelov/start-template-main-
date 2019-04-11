@@ -9,6 +9,6 @@ module.exports = function () {
             .pipe(sm.gp.revAppend())
             .pipe(sm.gp.htmlBeautify())
             .pipe(sm.gulp.dest('build'))
-            .on('end', sm.browserSync.reload); //обновление страницы только после обработки всх файлов с перезагрузкой
+            .on('end', sm.browserSync.reload); 
     });
  }

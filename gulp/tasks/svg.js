@@ -12,7 +12,9 @@ module.exports = function () {
                     $('[stroke]').removeAttr('stroke');
                     $('[style]').removeAttr('style');
                 },
-                parserOptions: {xmlMode: true}
+                parserOptions: {
+                    xmlMode: true
+                }
             }))
             .pipe(sm.gp.replace('&gt;', '>'))
             .pipe(sm.gp.svgSprite({
@@ -23,5 +25,5 @@ module.exports = function () {
                 }
             }))
             .pipe(sm.gulp.dest('build/img/svg'));
-        });
+    });
 };

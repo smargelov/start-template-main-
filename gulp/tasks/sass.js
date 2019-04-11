@@ -1,47 +1,46 @@
 module.exports = function () {
     sm.gulp.task('sass:dev', function () {
         return sm.gulp.src('src/sass/*.sass')
-            .pipe(sm.gp.sass()) //запускаем sass
-            .pipe(sm.gp.sourcemaps.init()) //инициализация sourcemap
-            .pipe(sm.gp.autoprefixer({ // запускаем авоперфиксер
-                browsers: ['last 10 versions'] //последние 10 версии браузеров
+            .pipe(sm.gp.sass())
+            .pipe(sm.gp.sourcemaps.init())
+            .pipe(sm.gp.autoprefixer({
+                browsers: ['last 10 versions']
             }))
-            .on("error", sm.gp.notify.onError({ // отображение ошибок
+            .on("error", sm.gp.notify.onError({
                 title: "Ошибка в стилях"
-              }))
-            
-            .pipe(sm.gp.sourcemaps.write()) // запись sourcemap
+            }))
+
+            .pipe(sm.gp.sourcemaps.write())
             .pipe(sm.gulp.dest('build/css'))
-            .pipe(sm.browserSync.reload({ //обновление страницы только после обработки всх файлов без перезагрузки
+            .pipe(sm.browserSync.reload({
                 stream: true
             }));
     });
-    
-    
+
+
 
     sm.gulp.task('sass:build', function () {
-           return sm.gulp.src('src/sass/main.sass')
-            .pipe(sm.gp.sass()) //запускаем sass
-            .pipe(sm.gp.autoprefixer({ // запускаем авоперфиксер
-                browsers: ['last 10 versions'] //последние 10 версии браузеров
+        return sm.gulp.src('src/sass/main.sass')
+            .pipe(sm.gp.sass())
+            .pipe(sm.gp.autoprefixer({
+                browsers: ['last 10 versions']
             }))
-            .on("error", sm.gp.notify.onError({ // отображение ошибок
+            .on("error", sm.gp.notify.onError({
                 title: "Ошибка в стилях"
             }))
-            .pipe(sm.gp.csso({    //запускаем csso (объединяет элементы в итоговом css)
+            .pipe(sm.gp.csso({
                 restructure: false,
                 sourceMap: false
-            })) //запускаем csso (объединяет элементы в итоговом css)
-            .pipe(sm.mmq()) 
+            }))
+            .pipe(sm.mmq())
             .pipe(sm.gp.csscomb())
             .pipe(sm.gulp.dest('build/css'));
     });
 
-    sm.gulp.task('sass:lib', function() {
+    sm.gulp.task('sass:lib', function () {
         return sm.gulp.src('src/sass/libs.sass')
-            .pipe(sm.gp.sass()) //запускаем sass
+            .pipe(sm.gp.sass())
             .pipe(sm.gp.csso())
             .pipe(sm.gulp.dest('build/css'));
     });
 };
-

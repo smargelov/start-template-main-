@@ -1,8 +1,8 @@
 module.exports = function () {
-    sm.gulp.task('serve', function() { 
-        sm.browserSync.init({ //запускаем отслеживание
+    sm.gulp.task('serve', function () {
+        sm.browserSync.init({
             server: {
-                baseDir: "./build" //папка для отслеживания
+                baseDir: "./build"
             }
         });
     });
